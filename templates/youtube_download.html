@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Downloader
+{% endblock %}
+
+{% block content %}
+<br>
+<h2 style="text-align: center; background-color: lightpink; ">Download Now</h2>
+<br>
+
+{% if embed_link %}
+        <iframe style="margin-left: 30%; margin-right: 30%; padding-bottom: 20px;" width="350" height="180" src="{{ embed_link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% endif %}
+<br>
+  
+<div style="margin-left: 30%; margin-right: 30%; ">
+<table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">SrNO</th>
+        <th scope="col">Resolution</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in resolution %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{i}}</td>
+        <td><a href="{% url 'download_video' %}?url={{ url }}&res={{ i }}" class="btn btn-success">
+            Download
+        </a></td>
+      </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Youtube Videos Downloader
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Welcome to Youtube Downloader!</strong> {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<form style="margin:10%; margin-left: 30%; margin-right: 30%;" action="{% url 'youtube_download' %}" method="get">
+    <div class="mb-3">
+        <label for="basic-url" class="form-label">Your vanity URL</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon3">Enter Your URL</span>
+          <input style="background-color: lightyellow;" name="url" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+        </div>
+        <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+      </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+
+{% endblock %}
